@@ -1,16 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Store.Web.Models;
-using System.Diagnostics;
+﻿using Confluent.Kafka;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
@@ -18,15 +15,29 @@ namespace Store.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public async Task Pay(string product)
         {
-            return View();
-        }
+            try
+            {
+                var config = new ProducerConfig
+                {
+                    BootstrapServers = "localhost:9092"
+                };
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                using (var producer = new ProducerBuilder<Null, string>(config).Build())
+                {
+                    var result = await producer.ProduceAsync(
+                        "Delivery",
+                        new Message<Null, string>
+                        { Value = product });
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

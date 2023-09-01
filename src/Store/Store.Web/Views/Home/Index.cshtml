@@ -1,8 +1,124 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Loja";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    header{
+        margin-bottom: 30px;
+    }
+
+    .product{
+        height: 390px;
+        width: 200px;
+        justify-content: center;
+        display: flex;
+        flex-flow: wrap;
+        border: solid gray 1px;
+        margin: auto;
+    }
+
+    img{
+        height: 280px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .product-footer {
+        text-align: center;
+        width: 100%;
+        border-top: solid gray 1px;
+    }
+
+    .product-footer h2{
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+
+    .product-footer button {
+        margin-top: 5px;
+        background-color: limegreen;
+        color: floralwhite;
+        font-weight: bold;
+        border: 0;
+        border-radius: 4px;
+        padding: 3px 8px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="product">
+            <img src="https://tris.com.br/wp-content/uploads/2022/03/687650-A.jpg" alt="">
+            <div class="product-footer">
+                <h2>Lápis</h2>
+                <div>0,80 R$</div>
+                <button onclick="pay('lapis')">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="product">
+            <img src="https://static3.tcdn.com.br/img/img_prod/886231/mochila_de_passeio_13_pinguim_seanite_2125_1_bc6249e3d4f72ee4759121a8558e1aa9.jpg" alt="">
+            <div class="product-footer">
+                <h2>Mochila</h2>
+                <div>130,00 R$</div>
+                <button onclick="pay('mochila')">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="product">
+            <img src="https://cdn.awsli.com.br/600x450/2419/2419289/produto/15745356194313165c5.jpg" alt="">
+            <div class="product-footer">
+                <h2>Borracha</h2>
+                <div>3,00 R$</div>
+                <button onclick="pay('borracha')">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="product">
+            <img src="https://lojaswessel.vtexassets.com/arquivos/ids/169677/Caderno-Universitario-Capa-Dura-1-Materia-Foroni-Stitch-80-Folhas.png?v=638012782579000000" alt="">
+            <div class="product-footer">
+                <h2>Caderno</h2>
+                <div>30,00 R$</div>
+                <button onclick="pay('caderno')">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="product">
+            <img src="https://images.tcdn.com.br/img/img_prod/925441/180_estojo_studies_azul_253_1_5165e88a4ae50d5691f5eda9623d9fe6.jpg" alt="">
+            <div class="product-footer">
+                <h2>Estojo</h2>
+                <div>45,00 R$</div>
+                <button onclick="pay('estojo')">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 mb-2">
+        <div class="product">
+            <img src="https://lupel.com.br/wp-content/uploads/2021/01/Caneta-Bic-Cristal-DuraA-Classica.webp" alt="">
+            <div class="product-footer">
+                <h2>Caneta</h2>
+                <div>1,30 R$</div>
+                <button onclick="pay('caneta')">Comprar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    function pay(product) {
+
+        //$.post("@Url.Action("Pay")", product);
+
+        $.ajax({
+            url: "/Home/Pay", // always relative path!
+            type: "post",
+            data: { product: product },
+        });
+    }
+</script>

@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZJmgSe9X0gKAD1mQ47oPPnrHHoK4lqRpQo/fDkdHpe3H/Dwb79GZt8n5KJcqgPG+Mx/ALoXZR/ii0zrj7k99Bw==",
+  "dgSpecHash": "O+jotxUmEy/855QbwQg6TUWSNVQLwJe1slGgOvpTXi+P+BPQYAxYNhRcYec3RsRyuu+/fYSqqgJp4uUvQbdqVA==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\Store_Kafka_NET\\src\\Store\\Store.Web\\Store.Web.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Guilherme Ortiz\\.nuget\\packages\\confluent.kafka\\2.2.0\\confluent.kafka.2.2.0.nupkg.sha512",
+    "C:\\Users\\Guilherme Ortiz\\.nuget\\packages\\librdkafka.redist\\2.2.0\\librdkafka.redist.2.2.0.nupkg.sha512",
+    "C:\\Users\\Guilherme Ortiz\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
